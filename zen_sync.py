@@ -1,4 +1,8 @@
 #!/usr/bin/env python3
+# /// script
+# requires-python = ">=3.10"
+# dependencies = ["lz4"]
+# ///
 """Sync Zen browser workspaces between profiles, remapping container IDs by name.
 
 Subcommands:

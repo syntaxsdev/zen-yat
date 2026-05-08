@@ -7,7 +7,16 @@ mozilla sync handles bookmarks/passwords/history fine in zen, but workspaces (an
 ## requires
 
 - python 3.10+
-- `pip install lz4`
+- `lz4` (`pip install lz4`)
+
+or just use [uv](https://github.com/astral-sh/uv) and skip both — the script declares its deps inline (PEP 723), so `uv run zen_sync.py ...` resolves and runs everything automatically:
+
+```bash
+brew install uv
+uv run zen_sync.py list
+```
+
+first run downloads python 3.13 + lz4 silently. after that, it just works.
 
 ## profile paths
 
