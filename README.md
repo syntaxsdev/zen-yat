@@ -18,8 +18,14 @@ mozilla sync handles bookmarks/passwords/history fine in zen, but workspaces (an
 ## use it
 
 1. quit zen on both machines.
-2. copy the source profile's `zen-sessions.jsonlz4` and `containers.json` to the target machine somewhere convenient — syncthing, scp, usb stick, whatever. put them in a folder like `~/zen-yat-staging/<machine>/`.
-3. run the transform on the target:
+2. copy the source profile's `zen-sessions.jsonlz4` and `containers.json` to the target machine — syncthing, scp, usb stick, whatever. put them in a folder like `~/zen-yat-staging/<machine>/`.
+3. run the transform on the target. you can omit `--target` and the script will list local profiles from `profiles.ini` and let you pick (defaults to the active one):
+
+```bash
+python zen_sync.py transform --source ~/zen-yat-staging/windows
+```
+
+   or pass `--target` explicitly:
 
 ```bash
 python zen_sync.py transform \
@@ -34,6 +40,14 @@ the script:
 - backs up the target's existing `zen-sessions.jsonlz4` and `containers.json` with a timestamped suffix before overwriting
 - remaps `containerTabId` from source ids to target ids by matching container name / l10nID
 - auto-creates containers on the target if the source has ones the target doesn't
+
+## list local profiles
+
+```bash
+python zen_sync.py list
+```
+
+shows every profile in `profiles.ini` with its size and which one is active.
 
 ## debug
 
